@@ -3,7 +3,7 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/healenium/hlm-backend.svg?maxAge=25920)](https://hub.docker.com/u/healenium)
 [![License](https://img.shields.io/badge/license-Apache-brightgreen.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
-This repository contains automation tests with Webdriverio using Healenium.
+This repository contains automation tests with Webdriverio + Mocha using Healenium.
 
 [1. Start Healenium components](#1-start-healenium-components)
 * [Healenium with Selenoid](#run-healenium-with-selenoid)
@@ -11,7 +11,7 @@ This repository contains automation tests with Webdriverio using Healenium.
 
 [2. Configuration RemoteWebDriver for Healenium](#2-configuration-remotewebdriver-for-healenium)
 
-[3. Run tests using Mocha](#3-run-tests-using-mocha)
+[3. Run tests using Wdio](#3-run-tests-using-wdio)
 
 [4. Monitoring tests running](#4-monitoring-tests-running)
 
