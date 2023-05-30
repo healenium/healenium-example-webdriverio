@@ -33,7 +33,10 @@ services:
       - SPRING_POSTGRES_DB_HOST=postgres-db
       - KEY_SELECTOR_URL=false
       - COLLECT_METRICS=true
-      - HLM_LOG_LEVEL=info
+      - HLM_LOG_LEVEL=debug
+    volumes:
+      - ./screenshots/:/screenshots
+      - ./logs/:/logs
     networks:
       - healenium
 
@@ -56,18 +59,20 @@ services:
       - RECOVERY_TRIES=1
       - SCORE_CAP=.6
       - HEAL_ENABLED=true
-      - SELENIUM_SERVER_URL=http://hlm-selenoid:4444/wd/hub
+      - SELENIUM_SERVER_URL=http://selenium-hub:4444
       - APPIUM_SERVER_URL=http://host.docker.internal:4723/wd/hub
       - HEALENIUM_SERVER_URL=http://localhost:7878
       - HEALENIUM_SERVICE=http://healenium:7878
       - IMITATE_SERVICE=http://selector-imitator:8000
-      - HLM_LOG_LEVEL=info
+      - HLM_LOG_LEVEL=debug
+    volumes:
+      - ./screenshots/:/screenshots
+      - ./logs/:/logs
     networks:
       - healenium
 
   chrome:
-    image: selenium/node-chrome:103.0
-    container_name: node-chrome
+    image: selenium/node-chrome:latest
     shm_size: 2gb
     depends_on:
       - selenium-hub
@@ -79,8 +84,7 @@ services:
       - healenium
 
   edge:
-    image: selenium/node-edge:103.0
-    container_name: node-edge
+    image: selenium/node-edge:latest
     shm_size: 2gb
     depends_on:
       - selenium-hub
@@ -92,8 +96,7 @@ services:
       - healenium
 
   firefox:
-    image: selenium/node-firefox:101.0
-    container_name: node-firefox
+    image: selenium/node-firefox:latest
     shm_size: 2gb
     depends_on:
       - selenium-hub
@@ -105,7 +108,7 @@ services:
       - healenium
 
   selenium-hub:
-    image: selenium/hub:4.3.0
+    image: selenium/hub:latest
     container_name: selenium-hub
     ports:
       - "4442:4442"

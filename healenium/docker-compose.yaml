@@ -65,6 +65,9 @@ services:
       - HEALENIUM_SERVICE=http://healenium:7878
       - IMITATE_SERVICE=http://selector-imitator:8000
       - HLM_LOG_LEVEL=info
+    volumes:
+      - ./screenshots/:/screenshots
+      - ./logs/:/logs
     networks:
       - healenium
 
